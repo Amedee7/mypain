@@ -2,30 +2,30 @@
 
 namespace App\Repository;
 
-use App\Entity\Peinture;
+use App\Entity\Blogpost;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Peinture|null find($id, $lockMode = null, $lockVersion = null)
- * @method Peinture|null findOneBy(array $criteria, array $orderBy = null)
- * @method Peinture[]    findAll()
- * @method Peinture[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Blogpost|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Blogpost|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Blogpost[]    findAll()
+ * @method Blogpost[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PeintureRepository extends ServiceEntityRepository
+class BlogpostRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Peinture::class);
+        parent::__construct($registry, Blogpost::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Peinture $entity, bool $flush = true): void
+    public function add(Blogpost $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -37,7 +37,7 @@ class PeintureRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Peinture $entity, bool $flush = true): void
+    public function remove(Blogpost $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -45,27 +45,27 @@ class PeintureRepository extends ServiceEntityRepository
         }
     }
 
-
     // /**
-    //  * @return Peinture[] Returns an array of Peinture objects
+    //  * @return Blogpost[] Returns an array of Blogpost objects
     //  */
 
-    public function lastTree()
+    public function lastTree($value)
     {
-        return $this->createQueryBuilder('p')
-            // ->andWhere('p.exampleField = :val')
+        return $this->createQueryBuilder('b')
+            // ->andWhere('b.exampleField = :val')
             // ->setParameter('val', $value)
-            ->orderBy('p.id', 'DESC')
+            ->orderBy('b.id', 'DESC')
             ->setMaxResults(3)
             ->getQuery()
             ->getResult();
     }
 
+
     /*
-    public function findOneBySomeField($value): ?Peinture
+    public function findOneBySomeField($value): ?Blogpost
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()
