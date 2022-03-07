@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PeintureController!
+{% endblock %}
+
+{% block body %}
+	<section class="pt-7 pt-md-10">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="mb-5 teext-md">
+						Dernières actualiités
+					</h2>
+					<P>Lorem ipsum dolor sit, amet consectetur adipisicing.</P>
+				</div>
+				{% for blogposts in blogpost %}
+					<div class="col-12 col-md-6 d-flex">
+						<div class="card mb-6 shadow-light-lg lift lift-lg">
+							<div class="card shadow-sm">
+								<a href="" class="card-img-top">
+									<img class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveaspectratio="xMidYMid slice" focusable="false">
+										<title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">{{blogpost.titre}}</text>
+									</img>
+								</a>
+								<div class="card-body">
+									<p class="card-text">{{blogpost.contenu|u.truncate(150, '...', false)}}</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="btn-group">
+											<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+											<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+										</div>
+										<small class="text-muted">Ajouté le
+											{{blogpost.createdAt|date('d/m/Y')}}</small>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="d-flex justify-content-center">
+				{% do blogposts.setPageRange(2) %}
+				{{ knp_pagination_render(blogposts, 'base/pagination.html.twig') }}
+			</div>
+		</div>
+	</section>
+
+
+{% endblock %}
