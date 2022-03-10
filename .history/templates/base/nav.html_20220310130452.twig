@@ -19,7 +19,7 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Portfolio</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown03">
-						{% for categorie in categorieNavbar() %}
+						{% for categorie in categorieNavbar %}
 							<li>
 								<a class="dropdown-item" href="{{ path('portfolio_categorie', {'slug': categorie.slug}) }}">{{categorie.nom}}</a>
 							</li>
@@ -36,7 +36,6 @@
 				<li class="nav-item">
 					<a class="navbar-btn btn btn-sn btn-primary lift ms-auto" href="#">Me contacter</a>
 				</li>
-
 			</ul>
 		</div>
 	</div>

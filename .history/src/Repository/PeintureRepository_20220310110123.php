@@ -3,11 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Peinture;
-use App\Entity\Categorie;
-use Doctrine\ORM\ORMException;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method Peinture|null find($id, $lockMode = null, $lockVersion = null)
@@ -65,14 +64,13 @@ class PeintureRepository extends ServiceEntityRepository
     /**
      * @Return Peinture[] Returns an array of Peinture objects
      */
-    public function findAllPorfolio(Categorie $categorie): array
+    public function findAllPorfolio('p')
     {
-        return $this->createQueryBuilder('p')
-            ->where(':categorie MEMBER of p.categorie')
-            ->andWhere('p.portfolio = TRUE')
-            ->setParameter('categorie', $categorie)
-            ->setMaxResults(3)
-            ->getQuery()
-            ->getResult();
+        ->where(':categorie MEMBER of p.categorie')
+         ->andWhere('p.portfolio = TRUE')
+         ->setParameter('categorie', $categorie)
+        ->setMaxResults(3)
+        ->getQuery()
+        ->getResult();
     }
 }
