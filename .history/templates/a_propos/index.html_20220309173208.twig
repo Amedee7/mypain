@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A propos
+{% endblock %}
+
+{% block body %}
+
+	<div class="cover-container d-flex w-150 h-150 p-3 mx-auto flex-column d-flex h-150 text-center text-white" style="background-image: url(/img/img_1.jpg)">
+		<main class="px-3">
+			<h1>{{ peintre.prenom }}
+				{{ peintre.nom }}</h1>
+			<p class="lead">{{ peintre.aPropos }}</p>
+		</main>
+	</div>
+{% endblock %}

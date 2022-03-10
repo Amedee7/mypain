@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A propos
+{% endblock %}
+
+{% block body %}
+
+	<hr class="featurette-divider">
+
+	<div class="row featurette">
+		<div class="col-md-7">
+			<h2 class="featurette-heading">My name is
+				<span class="text-muted">{{ peintre.prenom }}
+					{{ peintre.nom }}</span>
+			</h2>
+			<p class="lead">{{ peintre.aPropos }}</p>
+		</div>
+		<div class="col-md-5" width="500" height="500" style="background-image: url(/img/img_1.jpg)"></div>
+	</div>
+{% endblock %}
