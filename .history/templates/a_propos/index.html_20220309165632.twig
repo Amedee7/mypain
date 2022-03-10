@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A propos
+{% endblock %}
+
+{% block body %}
+	<main class="px-3">
+		<h1>{{ peintre.prenom }}
+			{{ peintre.nom }}</h1>
+		<p class="lead">{{ peintre.aPropos }}</p>
+	</main>
+{% endblock %}

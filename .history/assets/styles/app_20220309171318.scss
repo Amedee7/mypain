@@ -3,6 +3,40 @@
 body {
     padding-bottom: 20px;
   }
+
+  /*
+ * Globals
+ */
+
+
+/* Custom default button */
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+}
+
+
+/*
+ * Base structure
+ */
+ .bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+.cover-container {
+  max-width: 42em;
+}
   
   .navbar {
     margin-bottom: 20px;
@@ -86,6 +120,13 @@ body {
 .marketing h2 {
   font-weight: 400;
 }
+/* rtl:begin:ignore */
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+/* rtl:end:ignore */
+
 
 /* Featurettes
 ------------------------- */
@@ -98,6 +139,8 @@ body {
 .featurette-heading {
   font-weight: 300;
   line-height: 1;
+  /* rtl:remove */
+  letter-spacing: -.05rem;
 }
 
 
