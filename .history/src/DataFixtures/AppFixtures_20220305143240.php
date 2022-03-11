@@ -42,7 +42,7 @@ class AppFixtures extends Fixture
             $blogpost = new Blogpost();
 
             $blogpost->setTitre($faker->words(3, true))
-                ->setCreatedAt($faker->\DateTime dateTimeBetween('-6 month', 'now'))
+                ->setCreatedAt($faker->dateTimeBetween('-6 month', 'now'))
                 ->setContenu($faker->text(350))
                 ->setSlug($faker->slug(3))
                 ->setUser($user);
