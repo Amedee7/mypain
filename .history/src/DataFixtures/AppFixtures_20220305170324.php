@@ -70,7 +70,7 @@ class AppFixtures extends Fixture
             ->setFile('/img/placeholder.jpg')
             ->addCategorie($categorie)
             ->setPrix($faker->randomFloat(2, 100, 9999))
-            ->setUser($user)
+            ->setUser($user);
 
             $manager->persist($blogpost);
         }

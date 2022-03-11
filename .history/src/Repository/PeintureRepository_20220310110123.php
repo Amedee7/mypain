@@ -64,8 +64,9 @@ class PeintureRepository extends ServiceEntityRepository
     /**
      * @Return Peinture[] Returns an array of Peinture objects
      */
-    public function findAllPorfolio('p')
+    public function findAllPorfolio(Categorie $categorie): array
     {
+        return $this->createQueryBuilder('p')
         ->where(':categorie MEMBER of p.categorie')
          ->andWhere('p.portfolio = TRUE')
          ->setParameter('categorie', $categorie)

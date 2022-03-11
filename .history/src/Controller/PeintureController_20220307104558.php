@@ -23,7 +23,7 @@ class PeintureController extends AbstractController
             $request->query->getInt('page', 1),
         );
         return $this->render('peinture/realisations.html.twig', [
-            'peintures' => ,
+            'peintures' =>$peintures,
         ]);
     }
 }

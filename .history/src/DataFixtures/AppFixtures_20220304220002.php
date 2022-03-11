@@ -15,7 +15,7 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_FR');
 
         $user = new User();
-        $user->setEmail('user@test.com');
+        $user->setEmail('user@test.com')
                 ->setPrenom($faker->firstName())
                 ->setNom($faker->lastName())
                 ->setTelephone($faker->phoneNumber())

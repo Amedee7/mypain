@@ -85,7 +85,7 @@ class AppFixtures extends Fixture
 
             $manager->persist($peinture);
         }
-
+    }
 
         $manager->flush();
     }

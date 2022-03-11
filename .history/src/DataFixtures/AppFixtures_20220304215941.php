@@ -15,11 +15,11 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_FR');
 
         $user = new User();
-        $user->setEmail('user@test.com');
-        ->setPrenom($faker->firstName());
-        ->setNom($faker->lastName());
-        ->setTelephone($faker->phoneNumber());
-        ->setAPropos($faker->test());
+        $user->setEmail('user@test.com')
+        ->setPrenom($faker->firstName())
+        ->setNom($faker->lastName())
+        ->setTelephone($faker->phoneNumber())
+        ->setAPropos($faker->test())
         ->setInstagram('instagram');
 
         $manager->flush();
