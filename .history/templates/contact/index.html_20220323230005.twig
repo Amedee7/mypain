@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!
+{% endblock %}
+
+{% block body %}
+
+	<div class="container my-5">
+		<div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+			<div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+				<h1 class="display-4 fw-bold lh-1">Me contacter</h1>
+				{{form_start(form)}}
+				{% for message in app.flashes('success') %}
+					<div class="alert alert-success">
+						{{message}}
+					</div>
+				{% endfor %}
+				<div class="my-custom-class-for-errors">
+					{{form_errors(form)}}
+				</div>
+				<div class="row g-3">
+					<div class="col-sm-6">
+						<label for="firstName" class="form-label">{{form_label(form.nom)}}</label>
+						{{form_widget(form.nom)}}
+						<div class="invalid-feedback">
+							Valid first name is required.
+						</div>
+					</div>
+
+					<div class="col-12">
+						<label for="email" class="form-label">{{form_label(form.email)}}
+						</label>
+						{{form_widget(form.email)}}
+						<div class="invalid-feedback">
+							Please enter a valid email address for shipping updates.
+						</div>
+					</div>
+
+					<div class="col-12">
+						<label for="username" class="form-label">{{form_label(form.message)}}</label>
+						<div class="input-group has-validation">
+							{{form_widget(form.message)}}
+							<div class="invalid-feedback">
+								Your username is required.
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mt-4 mb-lg-3">
+					{{form_widget(form.envoyer)}}
+				</div>
+			</div>
+			<div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+				<img class="rounded-lg-3" style="background-image: url('img/img_3.png');" alt="" width="720">
+			</div>
+		</div>
+	</div>
+
+	{{form_end(form)}}
+</div>{% endblock %}

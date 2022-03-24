@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h4 class="mb-3">Me contacter</h4>
+		{{form_start(form)}}
+
+		{% for message in app.flashes.('success') %}
+			<div class="alert alert-success">
+				{{message}}
+			</div>
+		{% endfor %}
+		<div class="my-custom-class-for-errors">
+			{{form_errors(forms)}}
+		</div>
+		<form class="needs-validation" novalidate>
+			<div class="row g-3">
+				<div class="col-sm-6">
+					<label for="firstName" class="form-label">{{form_label(form.nom)}}</label>
+					{{form_widget(form.nom)}}
+					<div class="invalid-feedback">
+						Valid first name is required.
+					</div>
+				</div>
+
+				<div class="col-12">
+					<label for="email" class="form-label">{{form_label(form.email)}}
+						<span class="text-muted">(Optional)</span>
+					</label>
+					{{form_widget(form.email)}}
+					<div class="invalid-feedback">
+						Please enter a valid email address for shipping updates.
+					</div>
+				</div>
+
+				<div class="col-12">
+					<label for="username" class="form-label">{{form_label(form.message)}}</label>
+					<div class="input-group has-validation">
+						<span class="input-group-text">@</span>
+						{{form_widget(form.message)}}
+						<div class="invalid-feedback">
+							Your username is required.
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+{% endblock %}
