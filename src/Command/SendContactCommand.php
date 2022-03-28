@@ -35,16 +35,22 @@ class SendContactCommand extends Command
         parent::__construct();
     }
 
+    /**
+     * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $toSend = $this->contactRepository->findBy(['isSend' => false]);
-        $adress = new Address($this->userRepository->getPeintre()->getEmail(), $this->userRepository->getPeintre()->getNom() . '');
+        $address = new Address(
+            $this->userRepository->getPeintre()->getEmail(),
+            $this->userRepository->getPeintre()->getNom() . ' ' . $this->userRepository->getPeintre()->getPrenom()
+        );
 
         foreach ($toSend as $mail) {
             $email = (new Email())
                 ->from($mail->getEmail())
-                ->to($adress)
-                ->subject('Nouveau messa de ' . $mail->getNom())
+                ->to($address)
+                ->subject('Nouveau message ' . $mail->getNom())
                 ->text($mail->getMessage());
 
             $this->mailer->send($email);

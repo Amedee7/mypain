@@ -2,10 +2,8 @@
 
 namespace App\DataFixtures;
 
-use DateTime;
 use Faker\Factory;
 use App\Entity\User;
-use Faker\Generator;
 use App\Entity\Blogpost;
 use App\Entity\Peinture;
 use App\Entity\Categorie;
@@ -47,13 +45,25 @@ class AppFixtures extends Fixture
             $blogpost = new Blogpost();
 
             $blogpost->setTitre($faker->words(3, true))
-                ->setCreatedAt(new \DateTimeImmutable())
+                ->setCreatedAt(new \DatetimeImmutable)
                 ->setContenu($faker->text(350))
                 ->setSlug($faker->slug(3))
                 ->setUser($user);
 
             $manager->persist($blogpost);
         }
+
+        //Création d'un Blogpost pour un test
+
+        $blogpost = new Blogpost();
+
+        $blogpost->setTitre('Blogpost test')
+            ->setCreatedAt(new \DateTimeImmutable())
+            ->setContenu($faker->text(350))
+            ->setSlug('blogpost-test')
+            ->setUser($user);
+
+        $manager->persist($blogpost);
 
 
         //creation de 5 categories
@@ -87,6 +97,35 @@ class AppFixtures extends Fixture
                 $manager->persist($peinture);
             }
         }
+
+        //Catégorie de test
+
+        $categorie = new Categorie();
+        $categorie->setNom('categorie test')
+            ->setDescription($faker->words(101, true))
+            ->setSlug('categorie-test');
+
+        $manager->persist($categorie);
+
+        //Peinture pour les tests
+        $peinture = new Peinture();
+
+        $peinture->setNom('peinture test')
+            ->setLargeur($faker->randomFloat(2, 20, 60))
+            ->setHauteur($faker->randomFloat(2, 20, 60))
+            ->setEnVente($faker->randomElement([true, false]))
+            ->setDateRealisation(new \DateTimeImmutable())
+            ->setCreatedAt(new \DateTimeImmutable())
+            ->setDescription($faker->text())
+            ->setPortfolio($faker->randomElement([true, false]))
+            ->setSlug('peinture-test')
+            ->setFile('/img/placeholder.jpg')
+            ->addCategorie($categorie)
+            ->setPrix($faker->randomFloat(2, 100, 9999))
+            ->setUser($user);
+
+        $manager->persist($peinture);
+
 
         $manager->flush();
     }

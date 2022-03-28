@@ -2,6 +2,7 @@
 
 namespace App\Tests;
 
+use App\Entity\Commentaire;
 use App\Entity\User;
 use DateTimeImmutable;
 use App\Entity\Peinture;
@@ -46,7 +47,7 @@ class PeintureUnitTest extends TestCase
         $this->assertTrue($peinture->getUser() === $user);
     }
 
-    public function testIsfalse()
+    public function testIsFalse()
     {
         $peinture = new Peinture();
         $datetime = new DateTimeImmutable();
@@ -99,5 +100,34 @@ class PeintureUnitTest extends TestCase
         $this->assertEmpty($peinture->getPrix());
         $this->assertEmpty($peinture->getCategorie());
         $this->assertEmpty($peinture->getUser());
+        $this->assertEmpty($peinture->getId());
+    }
+
+    public function testAddGetRemoveCommentaire()
+    {
+        $peinture = new Peinture();
+        $commentaire = new Commentaire();
+
+        $this->assertEmpty($peinture->getCommentaires());
+
+        $peinture->addCommentaire($commentaire);
+        $this->assertContains($commentaire, $peinture->getCommentaires());
+
+        $peinture->removeCommentaire($commentaire);
+        $this->assertEmpty($peinture->getCommentaires());
+    }
+
+    public function testAddGetRemoveCategorie()
+    {
+        $peinture = new Peinture();
+        $categorie = new Categorie();
+
+        $this->assertEmpty($peinture->getCategorie());
+
+        $peinture->addCategorie($categorie);
+        $this->assertContains($categorie, $peinture->getCategorie());
+
+        $peinture->removeCategorie($categorie);
+        $this->assertEmpty($peinture->getCategorie());
     }
 }
