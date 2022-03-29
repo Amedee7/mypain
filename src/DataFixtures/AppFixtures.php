@@ -84,7 +84,7 @@ class AppFixtures extends Fixture
                     ->setLargeur($faker->randomFloat(2, 20, 60))
                     ->setHauteur($faker->randomFloat(2, 20, 60))
                     ->setEnVente($faker->randomElement([true, false]))
-                    ->setDateRealisation(new \DateTimeImmutable())
+                    ->setDateRealisation(new \DatetimeImmutable('-2 month'))
                     ->setCreatedAt(new \DateTimeImmutable())
                     ->setDescription($faker->text())
                     ->setPortfolio($faker->randomElement([true, false]))
