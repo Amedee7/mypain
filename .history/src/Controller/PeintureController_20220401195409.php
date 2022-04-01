@@ -18,7 +18,7 @@ class PeintureController extends AbstractController
      */
     public function realisations(PeintureRepository $peintureRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $data =  $peintureRepository->findBy([], ['id' => 'DESC']);
+        $data =  $peintureRepository->findAll();
         $peintures = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
