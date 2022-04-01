@@ -9,7 +9,7 @@ class SendContactCommand extends Command{
     private $mailer;
     private $contactService;
     private $userRepository;
-    protected static $defaultName = 'app:send-contact':
+    protected static $defaultName = 'app:send-contact';
 
 
     public function __construct(

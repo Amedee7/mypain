@@ -11,7 +11,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PortfolioController extends AbstractController
 {
-    #[Route('/portfolio', name: 'portfolio')]
+    /**
+     * @Route("/portfolio", name="portfolio")
+     */
     public function index(CategorieRepository $categorieRepository): Response
     {
         return $this->render('portfolio/index.html.twig', [
@@ -27,7 +29,7 @@ class PortfolioController extends AbstractController
         $peintures = $peintureRepository->findAllPorfolio($categorie);
         return $this->render('portfolio/categorie.html.twig', [
             'categorie' => $categorie,
-            'peintures' => $peintures
+            'peintures' => $peintures,
         ]);
     }
 }

@@ -9,7 +9,7 @@ class SendContactCommand extends Command{
     private $mailer;
     private $contactService;
     private $userRepository;
-    protected static $defaultName = 'app:send-contact':
+    protected static $defaultName = 'app:send-contact';
 
 
     public function __construct(
@@ -27,7 +27,7 @@ class SendContactCommand extends Command{
 
     protected function execute(InputInterface $input, OutputInterface $output){
         $toSend = $this->contactRepository->findBy(['isSend' => false]);
-        $adress = new Address($this->userRepository->getPeintre()->getEmail(), this->userRepository->getPeintre()->getNom() . '')
+        $adress = new Address($this->userRepository->getPeintre()->getEmail(), this->userRepository->getPeintre()->getNom() . '');
 
         foreach ($toSend as $mail) {
                 $email = (new Email())

@@ -11,9 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BlogpostController extends AbstractController
 {
-    /**
-     * @Route("/actualites", name="actualites")
-     */
+    #[Route('/actualites', name: 'actualites')]
     public function actualites(
         BlogpostRepository $blogpostRepository,
         PaginatorInterface $paginator,
