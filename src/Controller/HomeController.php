@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\UserRepository;
 use App\Repository\BlogpostRepository;
 use App\Repository\PeintureRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,11 +14,12 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(PeintureRepository $peintureRepository, BlogpostRepository $blogpostRepository): Response
+    public function index(PeintureRepository $peintureRepository, BlogpostRepository $blogpostRepository, UserRepository $userRepository): Response
     {
         return $this->render('home/index.html.twig', [
             'peintures' => $peintureRepository->lastTree(),
-            'blogposts' => $blogpostRepository->lastTree()
+            'blogposts' => $blogpostRepository->lastTree(),
+            'peintre' => $userRepository->getPeintre(),
         ]);
     }
 }
