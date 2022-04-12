@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PeintureController!
+{% endblock %}
+
+{% block body %}
+	<section class="pt-7 pt-md-10">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="mb-5 teext-md">
+						Dernières réalisations
+					</h2>
+					<P>Lorem ipsum dolor sit, amet consectetur adipisicing.</P>
+				</div>
+				{% for peinture in peintures %}
+					<div class="col-12 col-md-4 d-flex">
+						<div class="col list lift-lg">
+							<div class="card shadow-sm">
+								<a href="{{ path('realisations_details', {'slug': peinture.slug}) }}" class="card-img-top">
+									<img src="{{ vich_uploader_asset(peinture, 'imageFile') }}" alt="..." class="bd-placeholder-img card-img-top" width="100%" height="225" role="img" aria-label="Placeholder: Thumbnail" preserveaspectratio="xMidYMid slice" focusable="false">
+								</a>
+								<h4 class="mt-2 mx-3">
+									<text x="50%" y="50%" fill="#eceeef" dy=".3em">{{peinture.nom}}</text>
+								</h4>
+								<div class="card-body">
+									<p class="card-text">{{peinture.description|u.truncate(200, '...', false)}}</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="btn-group">
+											<button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
+											<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+										</div>
+										<small class="text-muted">Ajouté le
+											{{peinture.createdAt|date('d/m/Y')}}
+										</small>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="d-flex justify-content-center">
+				{% do peintures.setPageRange(2) %}
+				{{ knp_pagination_render(peintures, 'base/pagination.html.twig') }}
+			</div>
+		</div>
+	</section>
+
+
+{% endblock %}

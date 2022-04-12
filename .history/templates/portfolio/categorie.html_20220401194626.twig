@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Portfolio
+{% endblock %}
+
+{% block body %}
+	{% set peinture = categorie.peintures|last %}
+	<div class="container px-4 py-5" id="custom-cards">
+
+		<h2 class="pb-2 border-bottom">{{categorie.nom}}</h2>
+		<small>{{categorie.description}}</small>
+
+		<div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+			{% for peinture in peintures %}
+				<div class="col">
+					<a href="#!" class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"></a>
+					<img src="{{ vich_uploader_asset(peinture, 'imageFile') }}" alt="..." class="bd-placeholder-img card-img-top" width="100%" height="225" role="img" aria-label="Placeholder: Thumbnail" preserveaspectratio="xMidYMid slice" focusable="false">
+
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

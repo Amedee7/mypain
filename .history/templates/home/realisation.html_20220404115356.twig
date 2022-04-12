@@ -1,0 +1,28 @@
+<div class="album py-5 bg-light">
+	<div class="container">
+
+		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+			{% for peinture in peintures %}
+				<div class="col list lift-lg">
+					<div class="card shadow-sm">
+						<img src="{{ vich_uploader_asset(peinture, 'imageFile') | imagine_filter('miniature') }}" alt="..." class="bd-placeholder-img card-img-top" width="100%" height="225" role="img" aria-label="Placeholder: Thumbnail">
+						<h4 class="mt-2 mx-3">
+							<text x="50%" y="50%" fill="#eceeef" dy=".3em">{{peinture.nom}}</text>
+						</h4>
+						<div class="card-body">
+							<p class="card-text">{{peinture.description|u.truncate(200, '...', false)}}</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">Modif</button>
+								</div>
+								<small class="text-muted">Ajouté le
+									{{peinture.createdAt|date('d/m/Y')}}</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
